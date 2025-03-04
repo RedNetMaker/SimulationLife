@@ -1,13 +1,28 @@
+import numpy as np
 import pygame
 import sys
 
 # Инициализация pygame
 pygame.init()
 
-# Размеры окна и клетки
-WINDOW_SIZE = (800, 800)
-CELL_SIZE = 8  # Размер клетки в пикселях
-GRID_SIZE = (100, 100)  # Размер сетки в клетках
+# Размер мира
+world_width = 180
+world_height = 96
+# Размер мозга бота
+bot_mind_size = 64
+# Сезоны: 11-лето, 10-весна\осень, 9-зима
+season = 11
+season_max = 10
+season_time = 0
+
+# Создание мира
+world = np.zeros((world_height, world_width))
+np.set_printoptions(threshold=np.inf, linewidth=np.inf)
+
+
+CELL_SIZE = 4  # Размер клетки в пикселях
+WINDOW_SIZE = (world_width * CELL_SIZE, world_height * CELL_SIZE) # Размеры окна и клетки
+GRID_SIZE = (world_width, world_height)  # Размер сетки в клетках
 
 # Цвета
 WHITE = (255, 255, 255)
@@ -16,9 +31,6 @@ BLACK = (0, 0, 0)
 # Создание окна
 screen = pygame.display.set_mode(WINDOW_SIZE)
 pygame.display.set_caption("Grid Game")
-
-# Создание сетки
-# grid = [[WHITE for _ in range(GRID_SIZE[0])] for _ in range(GRID_SIZE[1])]
 
 def draw_grid():
     for y in range(GRID_SIZE[1]):
