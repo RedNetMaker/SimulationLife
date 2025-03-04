@@ -1,6 +1,10 @@
 import random
 
 class Bot:
+    brain = [26 for x in range(64)]
+    counter = 0
+
+
     def __init__(self, x, y):
         self.x = x
         self.y = y
