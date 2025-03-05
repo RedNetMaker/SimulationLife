@@ -13,3 +13,7 @@ class World:
 
     def __init__(self):
         self.world = np.zeros((self.world_height, self.world_width))
+
+        self.world[10][20] = 1
+        self.world[30][40] = 1
+        self.world[50][60] = 1
